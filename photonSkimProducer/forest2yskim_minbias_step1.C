@@ -27,7 +27,7 @@ static const long MAXTREESIZE = 10000000000;
 
 
 
-void forest2yskim_minbias_tracks(TString inputFile_="forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
+void forest2yskim_minbias_step1(TString inputFile_="forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
 				   sampleType colli=kHIDATA,
 				   int maxEvent = -1
 				   )

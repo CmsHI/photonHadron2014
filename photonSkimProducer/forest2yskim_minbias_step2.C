@@ -27,13 +27,13 @@ static const long MAXTREESIZE = 10000000000;
 
 
 
-void forest2yskim_minbias_forestV3(TString inputFile_="forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
-				   TString inputFileTrack="forestFiles/HiForest4/trackSkim_collId_kHIDATA_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
-				   sampleType colli=kHIDATA,
-				   int maxEvent = 1000,
-				   bool useGenJetColl = 0,
-				   TString jetAlgo="akPu3PF"
-				   )
+void forest2yskim_minbias_step2(TString inputFile_="forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
+				TString inputFileTrack="forestFiles/HiForest4/trackSkim_collId_kHIDATA_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",
+				sampleType colli=kHIDATA,
+				int maxEvent = 1000,
+				bool useGenJetColl = 0,
+				TString jetAlgo="akPu3PF"
+				)
 { 
   
   bool isMC=true;
