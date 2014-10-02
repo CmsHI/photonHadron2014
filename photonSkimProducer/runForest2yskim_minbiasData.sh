@@ -12,4 +12,4 @@
 # PbPb data
 
 root -l -q -b 'forest2yskim_minbias_step1.C++("forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root", 0,  -1)'
-root -l -q -b 'forest2yskim_minbias_step2.C++("forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",  "forestFiles/HiForest4/trackSkim_collId_kHIDATA_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",  0, -1,0,"akVs3PF")'
+root -l -q -b 'forest2yskim_minbias_step2.C++("forestFiles/HiForest4/HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",  "forestFiles/HiForest4/trackSkim_collId_kHIDATA_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root",  0, -1,0,"akVs3Calo")'
