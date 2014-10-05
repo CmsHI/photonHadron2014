@@ -530,6 +530,9 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
   else if ( jetAlgo == "ak3PF")  {
     theJet = &(c->ak3PF) ;   cout << "Using ak3PF Jet Algo" << endl<<endl;
   }
+  else if ( jetAlgo == "akVs3Calo") {
+    theJet = &(c->akVs3Calo) ;   cout << "Using akVs3Calo Jet Algo, Voronoi Subtraction method" << endl<<endl;
+  }
   else {
     cout <<" Jet algo  " << jetAlgo << "is not available" << endl;
     return;
