@@ -18,5 +18,5 @@
 
 
 # PbPb mc
-#root -l -q -b 'forest2yskim_minbias_tracks.C++("forestFiles/HiForest4/HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",1,-1)'
-root -l -q -b 'forest2yskim_minbias_forestV3.C++("forestFiles/HiForest4/HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",  "forestFiles/HiForest4/trackSkim_collId_kHIMC_HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",1, -1)'
+root -l -q -b 'forest2yskim_minbias_step1.C++("forestFiles/HiForest4/HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",1,-1)'
+root -l -q -b 'forest2yskim_minbias_step2.C++("forestFiles/HiForest4/HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",  "forestFiles/HiForest4/trackSkim_collId_kHIMC_HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root",1, -1)'

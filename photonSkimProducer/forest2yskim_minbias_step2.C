@@ -32,7 +32,7 @@ void forest2yskim_minbias_step2(TString inputFile_="forestFiles/HiForest4/HIMinB
 				sampleType colli=kHIDATA,
 				int maxEvent = 1000,
 				bool useGenJetColl = 0,
-				TString jetAlgo="akPu3PF"
+				TString jetAlgo="akVs3Calo"
 				)
 { 
   
@@ -242,7 +242,14 @@ void forest2yskim_minbias_step2(TString inputFile_="forestFiles/HiForest4/HIMinB
   else if ( jetAlgo == "akVs3PF") {
     theJet = &(c->akVs3PF) ;   cout << "Using ak3PF Jet Algo, Voronoi Subtraction method" << endl<<endl;
   } 
-  
+  else if ( jetAlgo == "akVs3Calo") {
+    theJet = &(c->akVs3Calo) ;   cout << "Using akVs3Calo Jet Algo, Voronoi Subtraction method" << endl<<endl;
+  } 
+  else  {
+    cout << "No Jet seleciton" << endl;
+    return ;
+  }
+
   
   /// LOOP!!
   int nentries = c->GetEntries();
