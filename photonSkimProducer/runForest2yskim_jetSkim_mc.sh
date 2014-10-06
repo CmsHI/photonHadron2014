@@ -17,14 +17,11 @@
 kHIMC=1
 kPPMC=3
 # pbpb MC
-inputSkim="forestFiles/HiForest4/skim_collId_kHIMC_jetAlgo_akPu3PF_HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root"
-for input in "forestFiles/HiForest_HYDJET_PYTHIA_allQCDPhoton30GeV_corrVtx_sept4.root" "forestFiles/HiForest_HYDJET_PYTHIA_emJet30GeV_corrVtx_sept4.root"
+inputSkim="forestFiles/mcPbPb/skim_collId_kHIMC_jetAlgo_akVs3Calo_HiForest_HYDJET_Track8_Jet21_STARTHI53_LV1_merged_forest_0.root"
+for input in "forestFiles/mcPbPb/HiForest_HYDJET_PYTHIA_allQCDPhoton30GeV_corrVtx_sept4.root"
 do
-    root -l -q -b 'forest2yskim_jetSkim_forestV3.C++("'$input'", "'$inputSkim'", 30,   '$kHIMC', "akPu3PF", 1)'
+    root -l -q -b 'forest2yskim_jetSkim.C+("'$input'", "'$inputSkim'", 25,   '$kHIMC', "akVs3Calo", 1)'
 echo "PbPb MC"
 done
-
-input="forestFiles/pp/pp2760_pythia_allQCDPhoton30_CMSSW538HIp2.root"
-#root -l -q -b 'forest2yskim_jetSkim_forestV3.C++("'$input'", "No file", 20,   '$kPPMC', "akPu3PF", 0)'
 
 

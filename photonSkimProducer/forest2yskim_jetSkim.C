@@ -555,7 +555,7 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
   cout << "number of entries = " << nentries << endl;
   for (Long64_t jentry = 0 ; jentry < nentries; jentry++) {
     eTot++;
-    if (jentry% 2000 == 0)  {
+    if (jentry% 2 == 0)  {
       cout <<jentry<<" / "<<nentries<<" "<<setprecision(2)<<(double)jentry/nentries*100<<endl;
     }
     
@@ -575,12 +575,8 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
     evt.hf4Sum = evt.hf4Pos + evt.hf4Neg;
     evt.cBin = -99;
     evt.pBin   = -99 ;
-    if (colli==kHIDATA) {
+    if ( (colli==kHIDATA) || (colli==kHIMC) ) {
       evt.cBin = c->evt.hiBin;
-      evt.pBin   = hEvtPlnBin->FindBin( c->evt.hiEvtPlanes[theEvtPlNumber] ) ;
-    }
-    if (colli==kHIMC) {
-      evt.cBin = c->evt.hiBin; 
       evt.pBin   = hEvtPlnBin->FindBin( c->evt.hiEvtPlanes[theEvtPlNumber] ) ;
     }
     else if ((colli==kPADATA)||(colli==kPAMC))   {
@@ -644,7 +640,7 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
     for (int j=0;j< c->photon.nPhotons;j++) {
       
       if (  ( c->photon.pt[j] > preCutPhotonEt ) && ( fabs( c->photon.eta[j] ) < cutphotonEta ) ) {
-	newPt[j] = c->getCorrEt(j);
+	newPt[j] =c->photon.pt[j] ;   //  c->getCorrEt(j); Until the new energy scale table is ready (Oct 6th 2014)
       }
       else
 	newPt[j] = c->photon.pt[j] - 10000;

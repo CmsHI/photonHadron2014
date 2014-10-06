@@ -23,14 +23,12 @@ kHIDATA=0
 kHIMC=1
 kPPDATA=2
 
-if ( 1==1 ) 
-    for jetAlgo in "akVs3PF"
-    do
-	input="forestFiles/HiForest4/hiForest_Photon40_GR_R_53_LV6_25Feb2014_1530CET_Track8_Jet15.root"
-	inputSkim="forestFiles/HiForest4/skim_collId_kHIDATA_jetAlgo_"$jetAlgo"_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root"
-	root -l -q -b 'forest2yskim_jetSkim_forestV3.C+("'$input'", "'$inputSkim'", 35,   '$kHIDATA', "'$jetAlgo'", 1)'
-    done
-fi
+for jetAlgo in "akVs3Calo"
+do
+    input="forestFiles/dataPbPb/forest_pbpb_photon30_isoUpdated.root"
+    inputSkim="forestFiles/dataPbPb/skim_collId_kHIDATA_jetAlgo_akVs3Calo_HIMinBias2011_GR_R_53_LV6_CMSSW_5_3_16_Forest_Track8_Jet21_0.root"
+    root -l -q -b 'forest2yskim_jetSkim.C++("'$input'", "'$inputSkim'", 30,   '$kHIDATA', "'$jetAlgo'", 1)'
+done
 
-root -l -q -b 'forest2yskim_jetSkim.C++("../HiForest_6_1_VPL.root", "NoFile", 18, 2, "ak3PF",0, "HLT_PAPhoton20_NoCaloIdVL_v1")'
+
 
