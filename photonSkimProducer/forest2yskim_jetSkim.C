@@ -24,7 +24,7 @@ using namespace std;
 static const int MAXTRK  = 10000;   // This is very enough.
 static const int MAXMTRK = 80000;   // Again this is very enough for 10 mixing
 static const int MAXMJET = 2000;
-static const long MAXTREESIZE = 30000000000;
+static const long MAXTREESIZE = 50000000000;
 
 
 
@@ -86,6 +86,8 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
 				   )
 
 {
+  bool fillSecondMtrk = false;
+
 
   TString sampleString = "kPPDATA";
   if (colli==kPADATA) sampleString = "kPADATA";
@@ -995,40 +997,45 @@ void forest2yskim_jetSkim(TString inputFile_="forestFiles/HiForest4/hiForest_Pho
 	nMTrk++;}
 
       
-      // 3.2.1 Tracks  - 2nd kind tracks
+      // 3.2.1 Tracks  - 2nd kind tracks   
+      if ( fillSecondMtrk ) 
+	nMTrkImb = 0;
+
       for (int it = 0 ; it < nMTrkImb ; it++) {
 	if ( mTrkPtImb[it] < cuttrkPtSkim )   continue;
-	if (  fabs(mTrkEtaImb[it]) > cuttrkEtaSkim ) continue;
-	mmTrkPt[nMmTrk]  = mTrkPtImb[it];
-	mmTrkEta[nMmTrk] = mTrkEtaImb[it];
-	mmTrkPhi[nMmTrk] = mTrkPhiImb[it];
-	mmTrkDphi[nMmTrk] =  getAbsDphi(mmTrkPhi[nMmTrk], gj.photonPhi) ;
-	mmTrkPurity[nMmTrk] = mTrkPurityImb[it];
-	mmTrkAlgo[nMmTrk] = mTrkAlgoImb[it];
-	int assocJetId = matchedJetFinder( theJet, mmTrkEta[nMmTrk], mmTrkPhi[nMmTrk]);
-	if ( assocJetId < 0 )  {
-	  mmTrkAsJetPt[nMmTrk] = -1;
-	  mmTrkAsJetEta[nMmTrk] = -1;
-	  mmTrkAsJetPhi[nMmTrk] = -1;
-	  mmTrkAsJetDR[nMmTrk] = 100;
-	}
-	else {
-	  mmTrkAsJetPt[nMmTrk] = theJet->jtpt[assocJetId];
-	  mmTrkAsJetEta[nMmTrk] = theJet->jteta[assocJetId];
-	  mmTrkAsJetPhi[nMmTrk] = theJet->jtphi[assocJetId];
-	  mmTrkAsJetDR[nMmTrk] =getDR( mmTrkEta[nMmTrk], mmTrkPhi[nMmTrk], theJet->jteta[assocJetId], theJet->jtphi[assocJetId]) ;
-	}
-	nMmTrk++;}
+	  if (  fabs(mTrkEtaImb[it]) > cuttrkEtaSkim ) continue;
+	  mmTrkPt[nMmTrk]  = mTrkPtImb[it];
+	  mmTrkEta[nMmTrk] = mTrkEtaImb[it];
+	  mmTrkPhi[nMmTrk] = mTrkPhiImb[it];
+	  mmTrkDphi[nMmTrk] =  getAbsDphi(mmTrkPhi[nMmTrk], gj.photonPhi) ;
+	  mmTrkPurity[nMmTrk] = mTrkPurityImb[it];
+	  mmTrkAlgo[nMmTrk] = mTrkAlgoImb[it];
+	  int assocJetId = matchedJetFinder( theJet, mmTrkEta[nMmTrk], mmTrkPhi[nMmTrk]);
+	  if ( assocJetId < 0 )  {
+	    mmTrkAsJetPt[nMmTrk] = -1;
+	    mmTrkAsJetEta[nMmTrk] = -1;
+	    mmTrkAsJetPhi[nMmTrk] = -1;
+	    mmTrkAsJetDR[nMmTrk] = 100;
+	  }
+	  else {
+	    mmTrkAsJetPt[nMmTrk] = theJet->jtpt[assocJetId];
+	    mmTrkAsJetEta[nMmTrk] = theJet->jteta[assocJetId];
+	    mmTrkAsJetPhi[nMmTrk] = theJet->jtphi[assocJetId];
+	    mmTrkAsJetDR[nMmTrk] =getDR( mmTrkEta[nMmTrk], mmTrkPhi[nMmTrk], theJet->jteta[assocJetId], theJet->jtphi[assocJetId]) ;
+	  }
+	  nMmTrk++;}
       
       iMix++;}
-  
+    
     
     tgj->Fill();
     newtreeJet->Fill();
     newtreeTrk->Fill();
     tmixJet->Fill();
     tmixTrk->Fill();
-    tmmixTrk->Fill();
+    if ( fillSecondMtrk ) 
+      tmmixTrk->Fill();
+
     newtreePhoton->Fill();
     if ( isMC )   {
       treeChg->Fill();
